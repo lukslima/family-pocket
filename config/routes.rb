@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  get 'page/index'
-  resources :transactions
+  root 'dashboard#index'
+  
   resources :categories
   resources :accounts
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :transactions, only: %w[index new destroy]
+  resources :incomes, only: %w[create update]
+  resources :expenses, only: %w[create update]
 end

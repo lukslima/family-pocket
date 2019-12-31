@@ -1,10 +1,10 @@
-<%= form_with(model: transaction, remote: true) do |form| %>
-  <% if transaction.errors.any? %>
+<%= form_with(model: income, remote: true) do |form| %>
+  <% if income.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
+      <h2><%= pluralize(income.errors.count, "error") %> prohibited this income from being saved:</h2>
 
       <ul>
-      <% transaction.errors.full_messages.each do |message| %>
+      <% income.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -15,7 +15,7 @@
     <div class='col s12'>
       <div class='card'>
         <div class='card-content'>
-          <span class='card-title'>New Transaction</span>
+          <span class='card-title'>Nova Entrada</span>
           <div class="input-field">
             <%= form.label :value %>
             <%= form.number_field :value, step: :any %>
@@ -32,7 +32,7 @@
           </div>
 
           <div class="input-field">
-            <%= form.select :category_id, Category.all.map{ |category| [category.name, category.id] } %>
+            <%= form.select :category_id, Category.income.map{ |category| [category.name, category.id] } %>
             <%= form.label :category_id %>
           </div>
 
@@ -43,7 +43,7 @@
         </div>
         <div class="card-action">
           <%= form.submit 'Save', class: 'btn btn-large waves-effect waves-light' %>
-          <%= link_to 'Back', transactions_path, class: 'btn btn-large waves-effect waves-light' %>
+          <%= link_to 'Back', root_path, class: 'btn btn-large waves-effect waves-light' %>
         </div>
       </div>
     </div>

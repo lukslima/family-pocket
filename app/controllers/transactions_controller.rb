@@ -7,50 +7,10 @@ class TransactionsController < ApplicationController
     @transactions = Transaction.latest_first
   end
 
-  # GET /transactions/1
-  # GET /transactions/1.json
-  def show
-  end
-
   # GET /transactions/new
   def new
-    @transaction = Transaction.new
-  end
-
-  # GET /transactions/1/edit
-  def edit
-  end
-
-  # POST /transactions
-  # POST /transactions.json
-  def create
-    @transaction = Transaction.new(transaction_params)
-
-    respond_to do |format|
-      if @transaction.save
-        flash[:notice] = 'Transaction was successfully created.'
-        format.js
-        format.html { redirect_to @transaction }
-        format.json { render :show, status: :created, location: @transaction }
-      else
-        format.html { render :new }
-        format.json { render json: @transaction.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /transactions/1
-  # PATCH/PUT /transactions/1.json
-  def update
-    respond_to do |format|
-      if @transaction.update(transaction_params)
-        format.html { redirect_to @transaction, notice: 'Transaction was successfully updated.' }
-        format.json { render :show, status: :ok, location: @transaction }
-      else
-        format.html { render :edit }
-        format.json { render json: @transaction.errors, status: :unprocessable_entity }
-      end
-    end
+    @expense = Expense.new
+    @income = Income.new
   end
 
   # DELETE /transactions/1
@@ -64,13 +24,12 @@ class TransactionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_transaction
-      @transaction = Transaction.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def transaction_params
-      params.require(:transaction).permit(:value, :date, :account_id, :category_id, :description)
-    end
+  def set_transaction
+    @transaction = Transaction.find(params[:id])
+  end
+
+  def transaction_params
+    params.require(:transaction).permit(:value, :date, :account_id, :category_id, :description)
+  end
 end

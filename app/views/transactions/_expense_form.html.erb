@@ -1,0 +1,51 @@
+<%= form_with(model: expense, remote: true) do |form| %>
+  <% if expense.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(expense.errors.count, "error") %> prohibited this expense from being saved:</h2>
+
+      <ul>
+      <% expense.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class='row'>
+    <div class='col s12'>
+      <div class='card'>
+        <div class='card-content'>
+          <span class='card-title'>Nova Saída</span>
+          <div class="input-field">
+            <%= form.label :value %>
+            <%= form.number_field :value, step: :any %>
+          </div>
+
+          <div class="input-field">
+            <%= form.text_field :date, class: 'datepicker' %>
+            <%= form.label :date %>
+          </div>
+
+          <div class="input-field">
+            <%= form.select :account_id, Account.all.map{ |account| [account.name, account.id] } %>
+            <%= form.label :account_id %>
+          </div>
+
+          <div class="input-field">
+            <%= form.select :category_id, Category.expense.map{ |category| [category.name, category.id] } %>
+            <%= form.label :category_id %>
+          </div>
+
+          <div class="input-field">
+            <%= form.text_field :description %>
+            <%= form.label :description %>
+          </div>
+        </div>
+        <div class="card-action">
+          <%= form.submit 'Save', class: 'btn btn-large red waves-effect waves-light' %>
+          <%= link_to 'Back', root_path, class: 'btn btn-large red waves-effect waves-light' %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

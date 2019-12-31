@@ -11,12 +11,17 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="input-field">
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
 
+  <div class="input-field">
+    <%= form.select :kind, Category.kinds.map { |key, value| [ value, key ] } %>
+    <%= form.label :kind %>
+  </div>
+
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Save', class: 'btn btn-large waves-effect waves-light' %>
   </div>
 <% end %>
