@@ -1,0 +1,28 @@
+<%= form_with(model: budget, local: true) do |form| %>
+  <% if budget.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(budget.errors.count, "error") %> prohibited this budget from being saved:</h2>
+
+      <ul>
+      <% budget.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="input-field">
+    <%= form.select :category_id, Category.expense.map{ |category| [category.name, category.id] } %>
+    <%= form.label :category_id %>
+  </div>
+
+  <div class="input-field">
+    <%= form.label :value %>
+    <%= form.number_field :value, step: :any %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Save', class: 'btn btn-large waves-effect waves-light' %>
+    <%= link_to 'Back', budgets_path, class: 'btn btn-large waves-effect waves-light' %>
+  </div>
+<% end %>

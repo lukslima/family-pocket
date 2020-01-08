@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :budgets
   root 'dashboard#index'
   
   resources :categories

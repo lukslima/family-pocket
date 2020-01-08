@@ -13,6 +13,12 @@ class TransactionsController < ApplicationController
     @income = Income.new
   end
 
+  def edit 
+    
+  end
+
+  
+
   # DELETE /transactions/1
   # DELETE /transactions/1.json
   def destroy

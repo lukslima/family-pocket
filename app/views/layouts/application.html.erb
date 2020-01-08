@@ -12,6 +12,17 @@
   </head>
 
   <body>
+    <div class="container">
+       <ul id="slide-out" class="sidenav">
+        <li><%= link_to 'Dashboard', root_path, data: { turbolinks: false } %></li>
+        <li><%= link_to 'Listar Transações', transactions_path, data: { turbolinks: false } %></li>
+        <li><div class="divider"></div></li>
+        <li><%= link_to 'Categorias', categories_path, data: { turbolinks: false } %></li>
+        <li><%= link_to 'Contas', accounts_path, data: { turbolinks: false } %></li>
+        <li><%= link_to 'Budgets', budgets_path, data: { turbolinks: false } %></li>
+      </ul>
+    </div>
+    <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     <%= yield %>
   </body>
 </html>
