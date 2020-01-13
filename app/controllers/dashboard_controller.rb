@@ -1,8 +1,8 @@
 class DashboardController < ApplicationController
   def index
-    @accounts = Account.all
-    @total_amount = Account.total_amount
-    
+    @accounts = Account.unless_cards
+    @total_amount = Account.unless_cards.total_amount
+
     @budgets = Budget.all
     @total_budget = Budget.total
   end

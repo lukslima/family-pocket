@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_08_042501) do
+ActiveRecord::Schema.define(version: 2020_01_12_164749) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "name"
     t.decimal "amount", precision: 8, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_card", default: false
   end
 
   create_table "budgets", force: :cascade do |t|

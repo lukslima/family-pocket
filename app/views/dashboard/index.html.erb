@@ -28,12 +28,26 @@
     <div class='card'>
       <div class='card-content'>
         <span class='card-title'>Budgets</span>
-        
-        <% @budgets.each do |budget| %>
-          <p>
-            <%= budget.category.name %>: <strong><%= budget.value %></strong> | <strong><%= budget.spend %></strong> | <strong><%= budget.value - budget.spend %></strong>
-          </p>
-        <% end %>
+        <table>
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Meta</th>
+              <th>Gasto</th>
+              <th>Resta</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @budgets.each do |budget| %>
+              <tr class='<%= budget.situation_color %>'>
+                <td><%= budget.category.name %></td>
+                <td><%= budget.value %></td>
+                <td><%= budget.spend %></td>
+                <td><%= budget.value - budget.spend %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
 
         <hr>
         <p>Total: <strong><%= @total_budget %> </strong></p>

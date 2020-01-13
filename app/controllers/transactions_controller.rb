@@ -1,6 +1,8 @@
 class TransactionsController < ApplicationController
   before_action :set_transaction, only: [:show, :edit, :update, :destroy]
 
+  has_scope :from_date_month, default: Date.today
+
   # GET /transactions
   # GET /transactions.json
   def index
@@ -12,12 +14,6 @@ class TransactionsController < ApplicationController
     @expense = Expense.new
     @income = Income.new
   end
-
-  def edit 
-    
-  end
-
-  
 
   # DELETE /transactions/1
   # DELETE /transactions/1.json

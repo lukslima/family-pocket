@@ -40,8 +40,11 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 #materialize css
 gem 'jquery-rails'
+gem 'jquery-turbolinks'
 gem 'materialize-sass'
 gem 'material_icons'
+
+gem 'has_scope'
 
 group :development, :test do
   gem 'pry-rails'

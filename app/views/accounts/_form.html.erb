@@ -11,17 +11,23 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="input-field">
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
 
-  <div class="field">
+  <div class="input-field">
     <%= form.label :amount %>
     <%= form.text_field :amount %>
   </div>
 
+  <label>
+    <%= form.check_box :is_card %>
+    <span><%= Account.human_attribute_name(:is_card) %></span>
+  </label>    
+
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Save', class: 'btn btn-large' %>
+    <%= link_to 'Back', accounts_path, class: 'btn btn-large' %>
   </div>
 <% end %>
