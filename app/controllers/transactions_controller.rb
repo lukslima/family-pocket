@@ -1,12 +1,16 @@
 class TransactionsController < ApplicationController
   before_action :set_transaction, only: [:show, :edit, :update, :destroy]
 
-  has_scope :from_date_month, default: Date.today
+  has_scope :from_date_month, default: Date.today.to_s do |_controller, scope, value|
+    scope.from_date_month(value.to_date)
+  end
+  # has_scope :by_description, default: 'teste'
 
   # GET /transactions
   # GET /transactions.json
   def index
-    @transactions = Transaction.latest_first
+    # binding.pry
+    @transactions = apply_scopes(Transaction).all
   end
 
   # GET /transactions/new

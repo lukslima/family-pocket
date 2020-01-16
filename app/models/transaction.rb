@@ -8,7 +8,9 @@ class Transaction < ApplicationRecord
   validates :value, presence: true
   validates :date, presence: true
 
+  scope :total, -> { sum(:value) }
   scope :latest_first, -> { order(date: :desc) }
+  scope :by_description, ->(description) { where(description: description) }
 
   scope :from_date_month, lambda { |date|
     between_dates(date.at_beginning_of_month, date.at_end_of_month)
