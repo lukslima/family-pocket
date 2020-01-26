@@ -21,6 +21,11 @@
     <%= form.number_field :value, step: :any %>
   </div>
 
+  <label>
+    <%= form.check_box :is_fixed %>
+    <span><%= Budget.human_attribute_name(:is_fixed) %></span>
+  </label>
+
   <div class="actions">
     <%= form.submit 'Save', class: 'btn btn-large waves-effect waves-light' %>
     <%= link_to 'Back', budgets_path, class: 'btn btn-large waves-effect waves-light' %>

@@ -2,6 +2,8 @@ class Budget < ApplicationRecord
   belongs_to :category
 
   scope :total, -> { sum(:value) }
+  scope :fixed, -> { where(is_fixed: true) }
+  scope :not_fixed, -> { where(is_fixed: false) }
 
   def spend
     category.transactions.sum(:value)
@@ -14,19 +16,15 @@ class Budget < ApplicationRecord
   end
 
   def good?
-    spend < less_ten_percent
+    spend < partial_budget
   end
 
   def warning?
-    spend.between?(less_ten_percent, pluss_ten_percent)
+    spend.between?(partial_budget, pluss_ten_percent)
   end
 
   def bad?
     spend > pluss_ten_percent
-  end
-
-  def less_ten_percent
-    partial_budget - ten_percent
   end
 
   def pluss_ten_percent

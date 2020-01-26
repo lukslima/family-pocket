@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_12_164749) do
+ActiveRecord::Schema.define(version: 2020_01_26_025619) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "name"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2020_01_12_164749) do
     t.decimal "value", precision: 8, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_fixed"
     t.index ["category_id"], name: "index_budgets_on_category_id"
   end
 

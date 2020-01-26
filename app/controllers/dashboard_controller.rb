@@ -8,7 +8,9 @@ class DashboardController < ApplicationController
     @accounts = Account.unless_cards
     @total_amount = Account.unless_cards.total_amount
 
-    @budgets = Budget.all
-    @total_budget = Budget.total
+    @fixed_budgets = Budget.fixed
+    @budgets = Budget.not_fixed
+    @total_fixed_budget = Budget.fixed.total
+    @total_budget = Budget.not_fixed.total
   end
 end
