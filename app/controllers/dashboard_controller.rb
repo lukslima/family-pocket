@@ -4,8 +4,8 @@ class DashboardController < ApplicationController
   end
 
   def index
-    @total_income = apply_scopes(Income.total)
-    @total_expense = apply_scopes(Expense.total)
+    @total_income = apply_scopes(Income).total
+    @total_expense = apply_scopes(Expense).total
 
     @accounts = Account.unless_cards
     @total_amount = Account.unless_cards.total_amount
