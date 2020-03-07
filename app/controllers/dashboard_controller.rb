@@ -1,5 +1,7 @@
 class DashboardController < ApplicationController
-  has_scope :from_date_month, default: Date.today
+  has_scope :from_date_month, default: Date.today.to_s do |_controller, scope, value|
+    scope.from_date_month(value.to_date)
+  end
 
   def index
     @total_income = apply_scopes(Income.total)
