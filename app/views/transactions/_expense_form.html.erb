@@ -18,7 +18,7 @@
           <span class='card-title'>Nova Saída</span>
           <div class="input-field">
             <%= form.label :value %>
-            <%= form.number_field :value, step: :any %>
+            <%= form.text_field :value, { class: 'money-mask' } %>
           </div>
 
           <div class="input-field">

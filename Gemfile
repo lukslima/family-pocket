@@ -44,6 +44,8 @@ gem 'jquery-turbolinks'
 gem 'materialize-sass'
 gem 'material_icons'
 
+gem 'maskmoney-rails'
+
 gem 'has_scope'
 
 group :development, :test do

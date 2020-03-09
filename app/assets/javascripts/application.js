@@ -15,4 +15,6 @@
 //= require activestorage
 //= require turbolinks
 //= require materialize-sprockets
+//= require maskmoney
+//= require select2
 //= require_tree .

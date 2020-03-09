@@ -5,5 +5,6 @@ $(document).on('ready turbolinks:load', function(){
   $('.tabs').tabs({swipeable: true});
   $('select').formSelect();
   $('.datepicker').datepicker();
+  $('.money-mask').maskMoney();
 });
   
