@@ -17,8 +17,8 @@
         <div class='card-content'>
           <span class='card-title'>Nova Entrada</span>
           <div class="input-field">
+            <%= form.text_field :value, { class: 'money-mask' }  %>
             <%= form.label :value %>
-            <%= form.number_field :value, step: :any %>
           </div>
 
           <div class="input-field">
