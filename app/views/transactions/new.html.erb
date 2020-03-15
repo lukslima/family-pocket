@@ -1,15 +1,11 @@
 <ul id="tabs-swipe-demo" class="tabs">
   <li class="tab col s3"><a class="active" href="#test-swipe-1">Saída</a></li>
   <li class="tab col s3"><a href="#test-swipe-2">Entrada</a></li>
-  <%# <li class="tab col s3"><a href="#test-swipe-3">Transferência</a></li> %>
 </ul>
 
 <div id="test-swipe-1">
-  <%= render 'expense_form', expense: @expense %>
+  <%= render '/expenses/form', expense: @expense %>
 </div>
 <div id="test-swipe-2">
-  <%= render 'income_form', income: @income %>
+  <%= render '/incomes/form', income: @income %>
 </div>
-<%# <div id="test-swipe-3">
-  <%= render 'form', transaction: @transaction %>
-<%# </div> %>

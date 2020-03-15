@@ -11,6 +11,9 @@ class Transaction < ApplicationRecord
   scope :total, -> { sum(:value) }
   scope :latest_first, -> { order(date: :desc) }
   scope :by_description, ->(description) { where(description: description) }
+  scope :by_category, ->(category_id) { where(category_id: category_id) }
+  scope :by_account, ->(account_id) { where(account_id: account_id) }
+  scope :by_type, ->(type) { where(type: type) }
 
   scope :from_date_month, lambda { |date|
     between_dates(date.at_beginning_of_month, date.at_end_of_month)

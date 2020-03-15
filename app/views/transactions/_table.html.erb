@@ -17,7 +17,7 @@
         <td><%= transaction.value %></td>
         <td><%= transaction.date %></td>
         <td><%= transaction.account.name %></td>
-        <td><%= transaction.category.name %></td>
+        <td><%= "#{transaction.category.id} - #{transaction.category.name}" %></td>
         <td><%= transaction.type %></td>
         <td><%= transaction.description %></td>
         <td><%= link_to 'Destroy', transaction_path(transaction), method: :delete, data: { confirm: 'Are you sure?' } %></td>

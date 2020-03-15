@@ -1,5 +1,35 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Transactions</h1>
+<div class='row'>
+  <div class='col s12'>
+    <div class='card'>
+      <div class='card-content'>
+        <span class='card-title'>Filtros</span>
+
+        <%= form_tag(transactions_path, method: 'get') do |f| %>
+          <div class="input-field">
+            <%= select_tag :by_account, options_from_collection_for_select(Account.all, "id", "name"), remote: true, onchange: '$(this.form).submit();', include_blank: true %>
+            <%= label_tag :account_id %>
+          </div>
+          
+          <div class="input-field">
+            <%= select_tag :by_category, options_from_collection_for_select(Category.all, "id", "name"), remote: true, onchange: '$(this.form).submit();', include_blank: true %>
+            <%= label_tag :category_id %>
+          </div>
+
+          <div class="input-field">
+            <%= select_tag :by_type, options_for_select(['Income', 'Expense']), remote: true, onchange: '$(this.form).submit();', include_blank: true %>
+            <%= label_tag 'Type' %>
+          </div>
+
+          <%= link_to 'Limpar', transactions_path, data: { turbolinks: false } %>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <%= render 'table' %>

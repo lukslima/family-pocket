@@ -1,24 +1,22 @@
 class TransactionsController < ApplicationController
   before_action :set_transaction, only: [:show, :edit, :update, :destroy]
-
+  
+  has_scope :by_account
+  has_scope :by_category
+  has_scope :by_type
   has_scope :from_date_month, default: Date.today.to_s do |_controller, scope, value|
     scope.from_date_month(value.to_date)
   end
 
-  # GET /transactions
-  # GET /transactions.json
   def index
-    @transactions = apply_scopes(Transaction).all
+    @transactions = apply_scopes(Transaction).latest_first
   end
 
-  # GET /transactions/new
   def new
     @expense = Expense.new
     @income = Income.new
   end
 
-  # DELETE /transactions/1
-  # DELETE /transactions/1.json
   def destroy
     @transaction.destroy
     respond_to do |format|
