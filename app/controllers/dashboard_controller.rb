@@ -14,6 +14,6 @@ class DashboardController < ApplicationController
     @total_fixed_budget = Budget.fixed.total
     @total_budget = Budget.not_fixed.total
 
-    @month = params[:by_month]
+    @month = params[:by_month].presence || Date.today.month.to_s
   end
 end

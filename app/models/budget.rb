@@ -6,7 +6,7 @@ class Budget < ApplicationRecord
   scope :not_fixed, -> { where(is_fixed: false) }
 
   def spend(month)
-    category.transactions.by_monty(month).sum(:value)
+    category.transactions.by_month(month).sum(:value)
   end
 
   def situation_color(month)
