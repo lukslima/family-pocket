@@ -5,7 +5,7 @@ class Budget < ApplicationRecord
   scope :fixed, -> { where(is_fixed: true) }
   scope :not_fixed, -> { where(is_fixed: false) }
 
-  def spend(monty)
+  def spend(month)
     category.transactions.by_monty(month).sum(:value)
   end
 
