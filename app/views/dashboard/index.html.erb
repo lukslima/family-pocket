@@ -74,7 +74,7 @@
           </thead>
           <tbody>
             <% @budgets.each do |budget| %>
-              <tr class="<%= budget.situation_color %>">
+              <tr class="<%= budget.situation_color(@month) %>">
                 <td><%= budget.category.name %></td>
                 <td><%= budget.value %></td>
                 <td><%= budget.spend(@month) %></td>
