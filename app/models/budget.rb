@@ -5,26 +5,26 @@ class Budget < ApplicationRecord
   scope :fixed, -> { where(is_fixed: true) }
   scope :not_fixed, -> { where(is_fixed: false) }
 
-  def spend
-    category.transactions.sum(:value)
+  def spend(monty)
+    category.transactions.by_monty(month).sum(:value)
   end
 
-  def situation_color
-    return 'green' if good?
-    return 'yellow' if warning?
-    return 'red' if bad?
+  def situation_color(month)
+    return 'green' if good?(month)
+    return 'yellow' if warning?(month)
+    return 'red' if bad?(month)
   end
 
-  def good?
-    spend < partial_budget
+  def good?(month)
+    spend(month) < partial_budget
   end
 
-  def warning?
-    spend.between?(partial_budget, pluss_ten_percent)
+  def warning?(month)
+    spend(month).between?(partial_budget, pluss_ten_percent)
   end
 
-  def bad?
-    spend > pluss_ten_percent
+  def bad?(month)
+    spend(month) > pluss_ten_percent
   end
 
   def pluss_ten_percent
