@@ -11,7 +11,7 @@
     <div class='card'>
       <div class='card-content'>
         <span class='card-title'>Entradas e Saídas</span>
-        <p>Total Entradas: <strong class='green'><%= @total_income %> </strong></p>
+        <p>Total Entradas: <strong class='green'><%= number_to_currency(@total_income, unit: "R$", separator: ",", delimiter: "") %> </strong></p>
         <p>Total Saídas: <strong class='red'><%= @total_expense %> </strong></p>
         
         <hr>

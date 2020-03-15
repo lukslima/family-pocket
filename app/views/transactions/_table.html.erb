@@ -14,7 +14,7 @@
   <tbody>
     <% @transactions.each do |transaction| %>
       <tr>
-        <td><%= transaction.value %></td>
+        <td><%= number_to_currency(transaction.value, unit: "R$", separator: ",", delimiter: "") %></td>
         <td><%= transaction.date %></td>
         <td><%= transaction.account.name %></td>
         <td><%= "#{transaction.category.id} - #{transaction.category.name}" %></td>

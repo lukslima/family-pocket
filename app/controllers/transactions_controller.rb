@@ -4,9 +4,11 @@ class TransactionsController < ApplicationController
   has_scope :by_account
   has_scope :by_category
   has_scope :by_type
-  has_scope :from_date_month, default: Date.today.to_s do |_controller, scope, value|
-    scope.from_date_month(value.to_date)
-  end
+  has_scope :by_year, default: '2020'
+  has_scope :by_month
+  # has_scope :from_date_month, default: Date.today.to_s do |_controller, scope, value|
+  #   scope.from_date_month(value.to_date)
+  # end
 
   def index
     @transactions = apply_scopes(Transaction).latest_first

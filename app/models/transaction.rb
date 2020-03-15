@@ -19,6 +19,9 @@ class Transaction < ApplicationRecord
     between_dates(date.at_beginning_of_month, date.at_end_of_month)
   }
 
+  scope :by_month, ->(month) { where('extract(month from date) = ?', month) }
+  scope :by_year, ->(year) { where('extract(year from date) = ?', year) }
+
   scope :between_dates, lambda { |first_day, last_day|
     where('date >= ? AND date <= ?', first_day, last_day)
   }

@@ -13,3 +13,12 @@ input[type='submit'] {
   height: auto !important;
   min-height: 100%;
 }
+
+select {
+  background-color: $select-background;
+  width: 100%;
+  padding: $select-padding;
+  border: $select-border;
+  border-radius: $select-radius;
+  height: $input-height;
+}
