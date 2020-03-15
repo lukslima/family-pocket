@@ -78,7 +78,7 @@
                 <td><%= budget.category.name %></td>
                 <td><%= budget.value %></td>
                 <td><%= budget.spend(@month) %></td>
-                <td><%= budget.value - budget.spend %></td>
+                <td><%= budget.value - budget.spend(@month) %></td>
               </tr>
             <% end %>
           </tbody>
