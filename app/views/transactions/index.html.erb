@@ -23,6 +23,11 @@
             <%= label_tag 'Type' %>
           </div>
 
+          <div class="input-field">
+            <%= select_tag :by_month, options_for_select((1..12).to_a), include_blank: true %>
+            <%= label_tag 'Month' %>
+          </div>
+
           <%= submit_tag 'Filtrar', class: 'btn btn-large red waves-effect waves-light' %>
           <%= link_to 'Limpar', transactions_path, data: { turbolinks: false }, class: 'btn btn-large red waves-effect waves-light' %>
 
